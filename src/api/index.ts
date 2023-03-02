@@ -1,6 +1,3 @@
-import { request } from '@/utils'
+export * from './login'
+export * from './user'
 
-export default {
-  getUser: () => request.get('/user'),
-  refreshToken: () => request.post('/auth/refreshToken'),
-}

@@ -1,6 +1,6 @@
-import type { AxiosRequestConfig } from 'axios'
+import {InternalAxiosRequestConfig} from "axios";
 
-interface RequestConfig extends AxiosRequestConfig {
+interface RequestConfig extends InternalAxiosRequestConfig {
   /** 接口是否需要token */
   noNeedToken?: boolean
   /** 接口是否需要错误提醒 */

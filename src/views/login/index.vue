@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useStorage } from '@vueuse/core'
-import api from './api'
+import login from '@/api/login'
+import AppPage from '@/components/page/AppPage.vue'
 import { getLocal, removeLocal, setLocal, setToken } from '@/utils'
 import bgImg from '@/assets/images/login_bg.webp'
 import { addDynamicRoutes } from '@/router'
@@ -29,27 +30,45 @@ if (localLoginInfo) {
 
 const loging = ref<boolean>(false)
 const isRemember = useStorage('isRemember', false)
+
 async function handleLogin() {
-  const { name, password } = loginInfo.value
+  const {
+    name,
+    password,
+  } = loginInfo.value
   if (!name || !password) {
     window.$message?.warning('请输入用户名和密码')
     return
   }
   try {
     loging.value = true
-    const res: any = await api.login({ name, password: password.toString() })
-    window.$notification?.success({ title: '登录成功！', duration: 2500 })
+    const res: any = await login.login({
+      name,
+      password: password.toString(),
+    })
+    window.$notification?.success({
+      title: '登录成功！',
+      duration: 2500,
+    })
     setToken(res.data.token)
-    if (isRemember.value)
-      setLocal('loginInfo', { name, password })
-    else
+    if (isRemember.value) {
+      setLocal('loginInfo', {
+        name,
+        password,
+      })
+    }
+    else {
       removeLocal('loginInfo')
+    }
 
     await addDynamicRoutes()
     if (query.redirect) {
       const path = query.redirect as string
       Reflect.deleteProperty(query, 'redirect')
-      router.push({ path, query })
+      router.push({
+        path,
+        query,
+      })
     }
     else {
       router.push('/')
@@ -71,7 +90,8 @@ async function handleLogin() {
 
       <div w-320 flex-col px-20 py-35>
         <h5 f-c-c text-24 font-normal color="#6a6a6a">
-          <icon-custom-logo mr-30 text-50 color-primary />{{ title }}
+          <icon-custom-logo mr-30 text-50 color-primary />
+          {{ title }}
         </h5>
         <div mt-30>
           <n-input

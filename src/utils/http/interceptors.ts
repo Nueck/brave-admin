@@ -17,11 +17,8 @@ export function reqResolve(config: RequestConfig) {
    * * 加上 token
    * ! 认证方案: JWT Bearer
    */
-  const Authorization = config.headers?.Authorization || `Bearer ${token}`
-  if (config.headers)
-    config.headers.Authorization = config.headers.Authorization || `Bearer ${token}`
-  else
-    config.headers = { Authorization }
+
+  config.headers.Authorization = `Bearer ${token}`
 
   return config
 }
