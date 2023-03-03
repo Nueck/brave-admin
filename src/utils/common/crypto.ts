@@ -1,7 +1,7 @@
 import CryptoJS from 'crypto-js'
 
 /**
- * 加密数据 
+ * 加密数据
  * @param data - 数据
  */
 export function encrypto(data: any) {

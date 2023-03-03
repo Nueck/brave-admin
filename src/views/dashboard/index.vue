@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref } from 'vue'
 
-import { CaretDownOutlined, CaretUpOutlined } from "@vicons/antd";
+import { CaretDownOutlined, CaretUpOutlined } from '@vicons/antd'
 
-const loading = ref(false);
+const loading = ref(false)
 </script>
 
 <template>
@@ -23,7 +23,9 @@ const loading = ref(false);
           :bordered="false"
         >
           <template #header-extra>
-            <n-tag type="success"> 日 </n-tag>
+            <n-tag type="success">
+              日
+            </n-tag>
           </template>
           <div class="py-1 px-1 flex justify-between">
             <n-skeleton v-if="loading" :width="100" size="medium" />
@@ -52,7 +54,9 @@ const loading = ref(false);
             <div class="flex justify-between">
               <n-skeleton v-if="loading" text :repeat="2" />
               <template v-else>
-                <div class="text-sn">总访问量：</div>
+                <div class="text-sn">
+                  总访问量：
+                </div>
                 <div class="text-sn" />
               </template>
             </div>
@@ -67,7 +71,9 @@ const loading = ref(false);
           :bordered="false"
         >
           <template #header-extra>
-            <n-tag type="info"> 周 </n-tag>
+            <n-tag type="info">
+              周
+            </n-tag>
           </template>
           <div class="py-1 px-1 flex justify-between">
             <n-skeleton v-if="loading" :width="100" size="medium" />
@@ -81,7 +87,9 @@ const loading = ref(false);
             <div class="flex justify-between">
               <n-skeleton v-if="loading" :width="100" size="medium" />
               <template v-else>
-                <div class="text-sn">总销售额：</div>
+                <div class="text-sn">
+                  总销售额：
+                </div>
                 <div class="text-sn" />
               </template>
             </div>
@@ -96,7 +104,9 @@ const loading = ref(false);
           :bordered="false"
         >
           <template #header-extra>
-            <n-tag type="warning"> 周 </n-tag>
+            <n-tag type="warning">
+              周
+            </n-tag>
           </template>
           <div class="py-1 px-1 flex justify-between">
             <n-skeleton v-if="loading" :width="100" size="medium" />
@@ -125,7 +135,9 @@ const loading = ref(false);
             <div class="flex justify-between">
               <n-skeleton v-if="loading" :width="100" size="medium" />
               <template v-else>
-                <div class="text-sn">转化率：</div>
+                <div class="text-sn">
+                  转化率：
+                </div>
                 <div class="text-sn" />
               </template>
             </div>
@@ -140,7 +152,9 @@ const loading = ref(false);
           :bordered="false"
         >
           <template #header-extra>
-            <n-tag type="error"> 月 </n-tag>
+            <n-tag type="error">
+              月
+            </n-tag>
           </template>
           <div class="py-1 px-1 flex justify-between">
             <n-skeleton v-if="loading" :width="100" size="medium" />
@@ -170,7 +184,9 @@ const loading = ref(false);
             <div class="flex justify-between">
               <n-skeleton v-if="loading" :width="100" size="medium" />
               <template v-else>
-                <div class="text-sn">总成交额：</div>
+                <div class="text-sn">
+                  总成交额：
+                </div>
                 <div class="text-sn" />
               </template>
             </div>
