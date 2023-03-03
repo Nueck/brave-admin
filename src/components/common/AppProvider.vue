@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { kebabCase } from 'lodash-es'
-import { useDialog, useLoadingBar, useMessage, useNotification } from 'naive-ui'
+import { NConfigProvider, dateZhCN, useDialog, useLoadingBar, useMessage, useNotification, zhCN } from 'naive-ui'
 import { useCssVar } from '@vueuse/core'
 import type { GlobalThemeOverrides } from 'naive-ui'
 
@@ -66,7 +66,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <n-config-provider wh-full :theme-overrides="themStore.naiveThemeOverrides" :theme="themStore.naiveTheme">
+  <NConfigProvider wh-full :locale="zhCN" :date-locale="dateZhCN" :theme-overrides="themStore.naiveThemeOverrides" :theme="themStore.naiveTheme">
     <n-loading-bar-provider>
       <n-dialog-provider>
         <n-notification-provider>
@@ -77,5 +77,5 @@ onBeforeUnmount(() => {
         </n-notification-provider>
       </n-dialog-provider>
     </n-loading-bar-provider>
-  </n-config-provider>
+  </NConfigProvider>
 </template>
