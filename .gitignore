@@ -29,8 +29,4 @@ stats.html
 
 types/components.d.ts
 
-# Rust Aadmin
-/src-rust/target
-/src-rust/.env
-/src-rust/ec-private.pem
 

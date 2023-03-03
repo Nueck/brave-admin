@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script setup lang="ts" xmlns:md="http://www.w3.org/1999/xhtml">
 import { useStorage } from '@vueuse/core'
-import login from '@/api/login'
+import { login } from '@/api/login'
 import AppPage from '@/components/page/AppPage.vue'
 import { getLocal, removeLocal, setLocal, setToken } from '@/utils'
 import bgImg from '@/assets/images/login_bg.webp'
@@ -32,10 +32,7 @@ const loging = ref<boolean>(false)
 const isRemember = useStorage('isRemember', false)
 
 async function handleLogin() {
-  const {
-    name,
-    password,
-  } = loginInfo.value
+  const { name, password } = loginInfo.value
   if (!name || !password) {
     window.$message?.warning('请输入用户名和密码')
     return
@@ -82,10 +79,28 @@ async function handleLogin() {
 </script>
 
 <template>
-  <AppPage :show-footer="true" bg-cover :style="{ backgroundImage: `url(${bgImg})` }">
-    <div m-auto p-15 f-c-c min-w-345 rounded-10 card-shadow bg-white dark:bg-dark bg-opacity-60>
+  <AppPage
+    :show-footer="true"
+    bg-cover
+    :style="{ backgroundImage: `url(${bgImg})` }"
+  >
+    <div
+      m-auto
+      p-15
+      f-c-c
+      min-w-345
+      rounded-10
+      card-shadow
+      bg-white
+      dark:bg-dark
+      bg-opacity-60
+    >
       <div w-380 hidden md:block px-20 py-35>
-        <img src="@/assets/images/login_banner.webp" w-full alt="login_banner">
+        <img
+          src="@/assets/images/login_banner.webp"
+          w-full
+          alt="login_banner"
+        >
       </div>
 
       <div w-320 flex-col px-20 py-35>
@@ -115,11 +130,23 @@ async function handleLogin() {
         </div>
 
         <div mt-20>
-          <n-checkbox :checked="isRemember" label="记住我" :on-update:checked="(val:boolean) => (isRemember = val)" />
+          <n-checkbox
+            :checked="isRemember"
+            label="记住我"
+            :on-update:checked="(val:boolean) => (isRemember = val)"
+          />
         </div>
 
         <div mt-20>
-          <n-button w-full h-50 rounded-5 text-16 type="primary" :loading="loging" @click="handleLogin">
+          <n-button
+            w-full
+            h-50
+            rounded-5
+            text-16
+            type="primary"
+            :loading="loging"
+            @click="handleLogin"
+          >
             登录
           </n-button>
         </div>
@@ -127,4 +154,3 @@ async function handleLogin() {
     </div>
   </AppPage>
 </template>
-

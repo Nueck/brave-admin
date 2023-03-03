@@ -2,21 +2,21 @@ import type { RouteType } from '~/types/router'
 const Layout = () => import('@/layout/index.vue')
 
 export default {
-  name: 'Me',
+  name: 'Dashboard',
   path: '/',
   component: Layout,
-  redirect: '/world',
+  redirect: '/dashboard',
   meta: {
-    order: 0,
+    order: 1,
   },
   children: [
     {
-      name: 'world',
-      path: 'world',
+      name: 'dashboard',
+      path: 'dashboard',
       component: () => import('./index.vue'),
       meta: {
-        title: '个人信息',
-        icon: 'mdi:home',
+        title: '指示版',
+        icon: 'mdi:asterisk-circle-outline',
       },
     },
   ],

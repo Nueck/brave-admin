@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import user from '@/api/user'
+import { user } from '@/api/user'
 import { removeToken, toLogin } from '@/utils'
 import { usePermissionStore, useTabStore } from '@/store'
 import { resetRouter } from '@/router'
@@ -14,7 +14,7 @@ interface UserInfo {
 export const useUserStore = defineStore('user', {
   state() {
     return {
-      userInfo: <UserInfo> {},
+      userInfo: <UserInfo>{},
     }
   },
   getters: {
@@ -37,7 +37,12 @@ export const useUserStore = defineStore('user', {
         const res: any = await user.getUser()
         if (res.code === 0) {
           const { id, name, avatar, role } = res.data
-          this.userInfo = { id, name, avatar, role }
+          this.userInfo = {
+            id,
+            name,
+            avatar,
+            role,
+          }
           return Promise.resolve(res.data)
         }
         else {
@@ -54,7 +59,7 @@ export const useUserStore = defineStore('user', {
       removeToken()
       resetPermission()
       resetTabs()
-      resetRouter()
+      await resetRouter()
       this.$reset()
       toLogin()
     },

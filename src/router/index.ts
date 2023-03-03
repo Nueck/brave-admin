@@ -1,7 +1,7 @@
 import type { App } from 'vue'
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import { setupRouterGuard } from './guard'
-import { NOT_FOUND_ROUTE, basicRoutes } from './routes'
+import { EMPTY_ROUTE, NOT_FOUND_ROUTE, basicRoutes } from './routes'
 import { getToken, isNullOrWhitespace } from '@/utils'
 import { usePermissionStore, useUserStore } from '@/store'
 import type { RouteType, RoutesType } from '~/types/router'
@@ -27,7 +27,8 @@ export async function addDynamicRoutes() {
 
   // 没有token情况
   if (isNullOrWhitespace(token)) {
-    // router.addRoute(EMPTY_ROUTE)
+    // 定位到登陆
+    router.addRoute(EMPTY_ROUTE)
     return
   }
 
@@ -40,7 +41,8 @@ export async function addDynamicRoutes() {
     accessRoutes.forEach((route: RouteType) => {
       !router.hasRoute(route.name) && router.addRoute(route)
     })
-    // router.hasRoute(EMPTY_ROUTE.name) && router.removeRoute(EMPTY_ROUTE.name)
+    // 删除空白的router
+    router.hasRoute(EMPTY_ROUTE.name) && router.removeRoute(EMPTY_ROUTE.name)
     router.addRoute(NOT_FOUND_ROUTE)
   }
   catch (error) {

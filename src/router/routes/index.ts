@@ -30,8 +30,7 @@ export const NOT_FOUND_ROUTE: RouteType = {
 export const EMPTY_ROUTE: RouteType = {
   name: 'Empty',
   path: '/:pathMatch(.*)*',
-  component: () => {
-  },
+  redirect: '/login',
 }
 
 const modules = import.meta.glob('@/views/**/route.ts', { eager: true }) as RouteModule

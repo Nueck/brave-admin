@@ -8,7 +8,7 @@ function initSvgLogo(id) {
   const div = document.createElement('div')
   div.innerHTML = svgStr
   if (appEl) {
-    appEl.appendChild(div)
+    appEl.appendChild(div) 
   }
 }
 

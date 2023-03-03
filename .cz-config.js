@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = { 
   types: [
     { value: 'feat',      name:'feat:      新增功能' },
     { value: 'fix',       name:'fix:       修复bug' },

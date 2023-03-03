@@ -7,7 +7,7 @@ const token = {
 
 export default [
   {
-    url: '/api/auth/login',
+    url: '/api/login',
     method: 'post',
     response: (options) => {
       const { name } = options.body

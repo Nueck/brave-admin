@@ -6,6 +6,7 @@ interface ViteEnv {
   VITE_USE_PROXY?: boolean
   VITE_USE_HASH?: boolean
   VITE_APP_TITLE: string
+  VITE_APP_SECRET:string
   VITE_PUBLIC_PATH: string
   VITE_BASE_API: string
   VITE_PROXY_TYPE?: ProxyType
