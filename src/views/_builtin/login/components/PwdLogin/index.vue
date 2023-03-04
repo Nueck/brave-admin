@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
+import { reactive, ref, watch } from 'vue';
 import type { FormInst, FormRules } from 'naive-ui';
 import { EnumLoginModule } from '@/enum';
 import { useAuthStore } from '@/store';
@@ -78,6 +78,10 @@ function handleUpdateValue(value: boolean) {
     removeTempInfoFormLocal();
   }
 }
+// 监听数据变化，如果有输入将记住我关闭
+watch(model, () => {
+  rememberMe.value = false;
+});
 </script>
 
 <style scoped></style>
