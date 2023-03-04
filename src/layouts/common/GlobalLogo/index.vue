@@ -1,9 +1,9 @@
 <template>
   <router-link :to="routeHomePath" class="flex-center w-full nowrap-hidden">
-    <system-logo class="text-32px text-primary" />
+    <!-- <system-logo class="text-32px text-primary" /> -->
     <h2
       v-show="showTitle"
-      class="pl-8px text-16px font-bold text-primary transition duration-300 ease-in-out"
+      class="pl-8px text-20px font-bold text-primary transition duration-300 ease-in-out"
       @click="toggleLocal"
     >
       {{ t('message.system.title') }}

@@ -2,16 +2,6 @@
   <n-grid :item-responsive="true" :x-gap="16" :y-gap="16">
     <n-grid-item span="0:24 640:24 1024:16">
       <n-space :vertical="true" :size="16">
-        <n-card title="项目主要技术栈" :bordered="false" size="small" class="shadow-sm rounded-16px">
-          <template #header-extra>
-            <a class="text-primary" href="javascript:;">更多技术栈</a>
-          </template>
-          <n-grid :item-responsive="true" responsive="screen" cols="m:2 l:3" :x-gap="8" :y-gap="8">
-            <n-grid-item v-for="item in technology" :key="item.id">
-              <technology-card v-bind="item" />
-            </n-grid-item>
-          </n-grid>
-        </n-card>
         <n-card title="动态" :bordered="false" size="small" class="shadow-sm rounded-16px">
           <template #header-extra>
             <a class="text-primary" href="javascript:;">更多动态</a>
@@ -36,79 +26,15 @@
             </n-grid-item>
           </n-grid>
         </n-card>
-        <n-card title="创意" :bordered="false" size="small" class="shadow-sm rounded-16px">
-          <icon-local-banner class="text-400px text-primary" />
-        </n-card>
       </n-space>
     </n-grid-item>
   </n-grid>
 </template>
 
 <script setup lang="ts">
-import { ShortcutsCard, TechnologyCard } from './components';
+import { ShortcutsCard } from './components';
 
 defineOptions({ name: 'DashboardWorkbenchMain' });
-
-interface Technology {
-  id: number;
-  name: string;
-  description: string;
-  author: string;
-  site: string;
-  icon: string;
-  iconColor?: string;
-}
-
-const technology: Technology[] = [
-  {
-    id: 0,
-    name: 'Vue',
-    description: '一套用于构建用户界面的渐进式框架',
-    author: '尤雨溪 - Evan You',
-    site: 'https://v3.cn.vuejs.org/',
-    icon: 'logos:vue'
-  },
-  {
-    id: 1,
-    name: 'TypeScript',
-    description: 'JavaScript类型的超集，它可以编译成纯JavaScript',
-    author: '微软 - Microsoft',
-    site: 'https://www.typescriptlang.org/',
-    icon: 'logos:typescript-icon'
-  },
-  {
-    id: 2,
-    name: 'Vite',
-    description: '下一代前端开发与构建工具',
-    author: '尤雨溪 - Evan You',
-    site: 'https://vitejs.cn/',
-    icon: 'logos:vitejs'
-  },
-  {
-    id: 3,
-    name: 'NaiveUI',
-    description: '一个 Vue 3 组件库',
-    author: '图森未来 - TuSimple',
-    site: 'https://www.naiveui.com/zh-CN/os-theme',
-    icon: 'logos:naiveui'
-  },
-  {
-    id: 4,
-    name: 'UnoCSS',
-    description: '下一代实用优先的CSS框架',
-    author: 'Anthony Fu',
-    site: 'https://uno.antfu.me/?s=',
-    icon: 'logos:unocss'
-  },
-  {
-    id: 5,
-    name: 'Pinia',
-    description: 'vue状态管理框架，支持vue2、vue3',
-    author: 'Posva',
-    site: 'https://pinia.esm.dev/',
-    icon: 'noto:pineapple'
-  }
-];
 
 interface Activity {
   id: number;

@@ -39,13 +39,6 @@ declare namespace UserManagement {
   }
 
   /**
-   * 用户性别
-   * - 0: 女
-   * - 1: 男
-   */
-  type GenderKey = NonNullable<User['gender']>;
-
-  /**
    * 用户状态
    * - 1: 启用
    * - 2: 禁用
@@ -53,4 +46,7 @@ declare namespace UserManagement {
    * - 4: 软删除
    */
   type UserStatusKey = NonNullable<User['userStatus']>;
+
+  // 用户权限
+  type UserAuthority = NonNullable<User['authority']>;
 }

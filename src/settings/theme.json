@@ -111,7 +111,7 @@
   "footer": {
     "fixed": false,
     "height": 48,
-    "visible": true
+    "visible": false
   },
   "page": {
     "animate": true,

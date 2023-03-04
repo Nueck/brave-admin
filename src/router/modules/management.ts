@@ -10,14 +10,15 @@ const management: AuthRoute.Route = {
       meta: {
         title: '用户管理',
         requiresAuth: true,
-        icon: 'ic:round-manage-accounts'
+        icon: 'ic:round-manage-accounts',
+        permissions: ['super']
       }
     }
   ],
   meta: {
     title: '系统管理',
     icon: 'carbon:cloud-service-management',
-    order: 9
+    order: 2
   }
 };
 

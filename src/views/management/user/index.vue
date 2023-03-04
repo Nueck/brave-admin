@@ -6,21 +6,15 @@
           <icon-ic-round-plus class="mr-4px text-20px" />
           新增
         </n-button>
-        <n-button type="error">
+        <!-- <n-button type="error">
           <icon-ic-round-delete class="mr-4px text-20px" />
           删除
-        </n-button>
-        <n-button type="success">
-          <icon-uil:export class="mr-4px text-20px" />
-          导出Excel
-        </n-button>
+        </n-button> -->
       </n-space>
-      <n-space align="center" :size="18">
+      <n-space align="center" :size="15">
         <n-button size="small" type="primary" @click="getTableData">
-          <icon-mdi-refresh class="mr-4px text-16px" :class="{ 'animate-spin': loading }" />
-          刷新表格
+          <icon-mdi-refresh :class="{ 'animate-spin': loading }" />
         </n-button>
-        <column-setting v-model:columns="columns" />
       </n-space>
     </n-space>
     <n-data-table :columns="columns" :data="tableData" :loading="loading" :pagination="pagination" />
@@ -35,10 +29,9 @@ import { NButton, NPopconfirm, NSpace, NTag } from 'naive-ui';
 import type { DataTableColumns, PaginationProps } from 'naive-ui';
 import { fetchUserList } from '@/service';
 import { useBoolean, useLoading } from '@/hooks';
-import { genderLabels, userStatusLabels } from '@/constants';
+import { userAuthority, userStatusLabels } from '@/constants';
 import TableActionModal from './components/TableActionModal.vue';
 import type { ModalType } from './components/TableActionModal.vue';
-import ColumnSetting from './components/ColumnSetting.vue';
 
 const { loading, startLoading, endLoading } = useLoading(false);
 const { bool: visible, setTrue: openModal } = useBoolean();
@@ -67,33 +60,51 @@ const columns: Ref<DataTableColumns<UserManagement.User>> = ref([
   {
     key: 'index',
     title: '序号',
-    align: 'center'
+    align: 'center',
+    sorter: (row1, row2) => row1.index - row2.index
   },
   {
     key: 'userName',
     title: '用户名',
-    align: 'center'
+    align: 'center',
+    defaultSortOrder: 'ascend',
+    sorter: 'default'
   },
   {
-    key: 'age',
-    title: '用户年龄',
-    align: 'center'
-  },
-  {
-    key: 'gender',
-    title: '性别',
+    key: 'authority',
+    title: '权限',
     align: 'center',
     render: row => {
-      if (row.gender) {
-        const tagTypes: Record<UserManagement.GenderKey, NaiveUI.ThemeColor> = {
-          '0': 'success',
-          '1': 'warning'
+      if (row.authority) {
+        const tagTypes: Record<UserManagement.UserAuthority, NaiveUI.ThemeColor> = {
+          admin: 'warning',
+          super: 'error',
+          user: 'success'
         };
 
-        return <NTag type={tagTypes[row.gender]}>{genderLabels[row.gender]}</NTag>;
+        return <NTag type={tagTypes[row.authority]}>{userAuthority[row.authority]}</NTag>;
       }
 
       return <span></span>;
+    },
+    defaultFilterOptionValues: [],
+    filterOptions: [
+      {
+        label: '超级管理员',
+        value: 'super'
+      },
+      {
+        label: '管理员',
+        value: 'admin'
+      },
+      {
+        label: '用户',
+        value: 'user'
+      }
+    ],
+    filter(value: string, row) {
+      // eslint-disable-next-line no-implicit-coercion, no-bitwise
+      return Boolean(~row.authority.indexOf(value));
     }
   },
   {
@@ -179,8 +190,6 @@ function handleDeleteTable(rowId: string) {
 const pagination: PaginationProps = reactive({
   page: 1,
   pageSize: 10,
-  showSizePicker: true,
-  pageSizes: [10, 15, 20, 25, 30],
   onChange: (page: number) => {
     pagination.page = page;
   },

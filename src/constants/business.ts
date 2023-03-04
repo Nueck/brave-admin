@@ -1,14 +1,3 @@
-/** 用户性别 */
-export const genderLabels: Record<UserManagement.GenderKey, string> = {
-  0: '女',
-  1: '男'
-};
-
-export const genderOptions: { value: UserManagement.GenderKey; label: string }[] = [
-  { value: '0', label: genderLabels['0'] },
-  { value: '1', label: genderLabels['1'] }
-];
-
 /** 用户状态 */
 export const userStatusLabels: Record<UserManagement.UserStatusKey, string> = {
   1: '启用',
@@ -16,6 +5,19 @@ export const userStatusLabels: Record<UserManagement.UserStatusKey, string> = {
   3: '冻结',
   4: '软删除'
 };
+
+/** 用户状态 */
+export const userAuthority: Record<UserManagement.UserAuthority, string> = {
+  admin: '管理员',
+  super: '超级管理员',
+  user: '用户'
+};
+
+export const userAuthorityOptions: { value: UserManagement.UserAuthority; label: string }[] = [
+  { value: 'admin', label: userAuthority.admin },
+  { value: 'super', label: userAuthority.super },
+  { value: 'user', label: userAuthority.user }
+];
 
 export const userStatusOptions: { value: UserManagement.UserStatusKey; label: string }[] = [
   { value: '1', label: userStatusLabels['1'] },

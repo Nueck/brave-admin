@@ -5,13 +5,8 @@
         <n-form-item-grid-item :span="12" label="用户名" path="userName">
           <n-input v-model:value="formModel.userName" />
         </n-form-item-grid-item>
-        <n-form-item-grid-item :span="12" label="年龄" path="age">
-          <n-input-number v-model:value="formModel.age" clearable />
-        </n-form-item-grid-item>
-        <n-form-item-grid-item :span="12" label="性别" path="gender">
-          <n-radio-group v-model:value="formModel.gender">
-            <n-radio v-for="item in genderOptions" :key="item.value" :value="item.value">{{ item.label }}</n-radio>
-          </n-radio-group>
+        <n-form-item-grid-item :span="12" label="权限" path="age">
+          <n-select v-model:value="formModel.authority" :options="userAuthorityOptions" />
         </n-form-item-grid-item>
         <n-form-item-grid-item :span="12" label="手机号" path="phone">
           <n-input v-model:value="formModel.phone" />
@@ -35,7 +30,7 @@
 import { ref, computed, reactive, watch } from 'vue';
 import type { FormInst, FormItemRule } from 'naive-ui';
 import { formRules, createRequiredFormRule } from '@/utils';
-import { genderOptions, userStatusOptions } from '@/constants';
+import { userStatusOptions, userAuthorityOptions } from '@/constants';
 
 export interface Props {
   /** 弹窗可见性 */
@@ -87,14 +82,13 @@ const title = computed(() => {
 
 const formRef = ref<HTMLElement & FormInst>();
 
-type FormModel = Pick<UserManagement.User, 'userName' | 'age' | 'gender' | 'phone' | 'email' | 'userStatus'>;
+type FormModel = Pick<UserManagement.User, 'userName' | 'authority' | 'phone' | 'email' | 'userStatus'>;
 
 const formModel = reactive<FormModel>(createDefaultFormModel());
 
 const rules: Record<keyof FormModel, FormItemRule | FormItemRule[]> = {
   userName: createRequiredFormRule('请输入用户名'),
-  age: createRequiredFormRule('请输入年龄'),
-  gender: createRequiredFormRule('请选择性别'),
+  authority: createRequiredFormRule('选择用户权限'),
   phone: formRules.phone,
   email: formRules.email,
   userStatus: createRequiredFormRule('请选择用户状态')
@@ -103,8 +97,7 @@ const rules: Record<keyof FormModel, FormItemRule | FormItemRule[]> = {
 function createDefaultFormModel(): FormModel {
   return {
     userName: '',
-    age: null,
-    gender: null,
+    authority: 'user',
     phone: '',
     email: null,
     userStatus: null

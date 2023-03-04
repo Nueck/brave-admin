@@ -28,16 +28,13 @@ declare namespace ApiUserManagement {
     id: string;
     /** 用户名 */
     userName: string | null;
-    /** 用户年龄 */
-    age: number | null;
-    /**
-     * 用户性别
-     * - 0: 女
-     * - 1: 男
-     */
-    gender: '0' | '1' | null;
+
+    // 权限
+    authority: 'admin' | 'super' | 'user';
+
     /** 用户手机号码 */
     phone: string;
+
     /** 用户邮箱 */
     email: string | null;
     /**
