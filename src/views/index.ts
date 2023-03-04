@@ -11,9 +11,10 @@ export const views: Record<
   login: () => import('./_builtin/login/index.vue'),
   'not-found': () => import('./_builtin/not-found/index.vue'),
   about: () => import('./about/index.vue'),
-  blog_manage_article: () => import('./blog/manage/article/index.vue'),
-  blog_manage_creation: () => import('./blog/manage/creation/index.vue'),
+  blog_article: () => import('./blog/article/index.vue'),
+  blog_creation: () => import('./blog/creation/index.vue'),
   dashboard_analysis: () => import('./dashboard/analysis/index.vue'),
   dashboard_workbench: () => import('./dashboard/workbench/index.vue'),
+  information: () => import('./information/index.vue'),
   management_user: () => import('./management/user/index.vue')
 };

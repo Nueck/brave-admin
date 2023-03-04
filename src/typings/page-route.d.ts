@@ -19,19 +19,19 @@ declare namespace PageRoute {
     | '403'
     | '404'
     | '500'
+    | 'constant-page'
+    | 'login'
+    | 'not-found'
     | 'about'
     | 'blog'
-    | 'blog_manage_article'
-    | 'blog_manage_creation'
-    | 'component'
-    | 'constant-page'
+    | 'blog_article'
+    | 'blog_creation'
     | 'dashboard'
     | 'dashboard_analysis'
     | 'dashboard_workbench'
-    | 'login'
+    | 'information'
     | 'management'
-    | 'management_user'
-    | 'not-found';
+    | 'management_user';
 
   /**
    * last degree route key, which has the page file
@@ -42,14 +42,15 @@ declare namespace PageRoute {
     | '403'
     | '404'
     | '500'
-    | 'about'
-    | 'blog_manage_article'
-    | 'blog_manage_creation'
     | 'constant-page'
+    | 'login'
+    | 'not-found'
+    | 'about'
+    | 'blog_article'
+    | 'blog_creation'
     | 'dashboard_analysis'
     | 'dashboard_workbench'
-    | 'login'
+    | 'information'
     | 'management_user'
-    | 'not-found'
   >;
 }
