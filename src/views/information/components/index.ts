@@ -1,4 +1,5 @@
-import WorkbenchHeader from './WorkbenchHeader/index.vue';
-import WorkbenchMain from './WorkbenchMain/index.vue';
+import TopChart from './TopChart/index.vue';
+import DataCard from './DataCard/index.vue';
+import BottomPart from './BottomPart/index.vue';
 
-export { WorkbenchHeader, WorkbenchMain };
+export { TopChart, DataCard, BottomPart };

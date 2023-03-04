@@ -3,12 +3,11 @@ const information: AuthRoute.Route = {
   path: '/information',
   component: 'self',
   meta: {
-    title: '个人信息',
-    icon: 'mdi:library-outline',
-    order: 0,
-    requiresAuth: true,
+    title: '首页',
+    icon: 'mdi:home-circle-outline',
     singleLayout: 'basic',
-    permissions: ['super', 'admin', 'user']
+    order: 0,
+    requiresAuth: true
   }
 };
 

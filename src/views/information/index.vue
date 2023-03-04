@@ -1,12 +1,13 @@
 <template>
-  <n-space :vertical="true" :size="16">
-    <workbench-header />
-    <workbench-main />
+  <n-space :vertical="true" :size="14">
+    <data-card />
+    <top-chart />
+    <bottom-part />
   </n-space>
 </template>
 
 <script lang="ts" setup>
-import { WorkbenchHeader, WorkbenchMain } from './components';
+import { BottomPart, DataCard, TopChart } from './components';
 </script>
 
 <style scoped></style>

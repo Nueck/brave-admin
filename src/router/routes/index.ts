@@ -30,6 +30,16 @@ export const constantRoutes: AuthRoute.Route[] = [
     }
   },
   {
+    name: 'build',
+    path: '/build',
+    component: 'self',
+    redirect: '/',
+    meta: {
+      title: '创建',
+      singleLayout: 'blank'
+    }
+  },
+  {
     name: 'constant-page',
     path: '/constant-page',
     component: 'self',
