@@ -27,6 +27,9 @@ interface ImportMetaEnv {
   readonly VITE_APP_TITLE: string;
   /** 项目描述 */
   readonly VITE_APP_DESC: string;
+
+  // AES密钥
+  readonly VITE_APP_SECRET: string;
   /**
    * 权限路由模式:
    * - static - 前端声明的静态

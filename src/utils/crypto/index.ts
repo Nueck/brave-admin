@@ -1,6 +1,6 @@
 import CryptoJS from 'crypto-js';
 
-const CryptoSecret = '__CryptoJS_Secret__';
+const CryptoSecret = import.meta.env.VITE_APP_SECRET;
 
 /**
  * 加密数据

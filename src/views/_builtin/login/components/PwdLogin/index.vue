@@ -8,7 +8,7 @@
     </n-form-item>
     <n-space :vertical="true" :size="24">
       <div class="flex-y-center justify-between">
-        <n-checkbox v-model:checked="rememberMe">记住我</n-checkbox>
+        <n-checkbox v-model:checked="rememberMe" @update:checked="handleUpdateValue">记住我</n-checkbox>
         <n-button :text="true" @click="toLoginModule('reset-pwd')">忘记密码？</n-button>
       </div>
       <n-button
@@ -43,21 +43,22 @@ import { useRouterPush } from '@/composables';
 import { formRules } from '@/utils';
 
 const auth = useAuthStore();
-const { login } = useAuthStore();
+const { login, tempInfo, setTempInfoToLocal, removeTempInfoFormLocal } = useAuthStore();
 const { toLoginModule } = useRouterPush();
 
 const formRef = ref<HTMLElement & FormInst>();
 
+// 判断临时信息的
 const model = reactive({
-  userName: '',
-  password: ''
+  userName: tempInfo ? tempInfo.userName : '',
+  password: tempInfo ? tempInfo.userPwd : ''
 });
+
+const rememberMe = ref(Boolean(tempInfo));
 
 const rules: FormRules = {
   password: formRules.pwd
 };
-
-const rememberMe = ref(false);
 
 async function handleSubmit() {
   await formRef.value?.validate();
@@ -65,6 +66,17 @@ async function handleSubmit() {
   const { userName, password } = model;
 
   login(userName, password);
+}
+
+// 处理复选框的事件
+function handleUpdateValue(value: boolean) {
+  rememberMe.value = value;
+  if (value) {
+    const { userName, password } = model;
+    setTempInfoToLocal(userName, password);
+  } else {
+    removeTempInfoFormLocal();
+  }
 }
 </script>
 

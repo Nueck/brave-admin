@@ -6,7 +6,7 @@ import { useRouterPush } from '@/composables';
 import { localStg } from '@/utils';
 import { useTabStore } from '../tab';
 import { useRouteStore } from '../route';
-import { getToken, getUserInfo, clearAuthStorage } from './helpers';
+import { getToken, getUserInfo, clearAuthStorage, getTempInfo, setTempInfo, removeTempInfo } from './helpers';
 
 interface AuthState {
   /** 用户信息 */
@@ -15,13 +15,16 @@ interface AuthState {
   token: string;
   /** 登录的加载状态 */
   loginLoading: boolean;
+  // 用户的临时信息
+  tempInfo: Temp.TempInfo | null;
 }
 
 export const useAuthStore = defineStore('auth-store', {
   state: (): AuthState => ({
     userInfo: getUserInfo(),
     token: getToken(),
-    loginLoading: false
+    loginLoading: false,
+    tempInfo: getTempInfo()
   }),
   getters: {
     /** 是否登录 */
@@ -30,6 +33,15 @@ export const useAuthStore = defineStore('auth-store', {
     }
   },
   actions: {
+    // 设置临时的信息
+    setTempInfoToLocal(name: string, pwd: string) {
+      setTempInfo(name, pwd);
+    },
+    // 删除临时信息
+    removeTempInfoFormLocal() {
+      removeTempInfo();
+    },
+
     /** 重置auth状态 */
     resetAuthStore() {
       const { toLogin } = useRouterPush(false);
@@ -88,6 +100,7 @@ export const useAuthStore = defineStore('auth-store', {
       let successFlag = false;
 
       // 先把token存储到缓存中(后面接口的请求头需要token)
+
       const { token, refreshToken } = backendToken;
       localStg.set('token', token);
       localStg.set('refreshToken', refreshToken);
@@ -114,6 +127,7 @@ export const useAuthStore = defineStore('auth-store', {
      */
     async login(userName: string, password: string) {
       this.loginLoading = true;
+
       const { data } = await fetchLogin(userName, password);
       if (data) {
         await this.handleActionAfterLogin(data);

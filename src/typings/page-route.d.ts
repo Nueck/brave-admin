@@ -33,7 +33,6 @@ declare namespace PageRoute {
     | 'dashboard'
     | 'dashboard_analysis'
     | 'dashboard_workbench'
-    | 'document'
     | 'exception'
     | 'exception_403'
     | 'exception_404'

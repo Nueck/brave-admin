@@ -14,6 +14,8 @@ declare namespace StorageInterface {
     refreshToken: string;
     /** 用户信息 */
     userInfo: Auth.UserInfo;
+    // 用户的临时信息
+    tempInfo: Temp.TempInfo;
     /** 主题配置 */
     themeSettings: Theme.Setting;
     /** 多页签路由信息 */

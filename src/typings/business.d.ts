@@ -20,6 +20,16 @@ declare namespace Auth {
   }
 }
 
+// 用户的临时信息
+declare namespace Temp {
+  interface TempInfo {
+    /** 用户名 */
+    userName: string;
+    /** 用户密码 */
+    userPwd: string;
+  }
+}
+
 declare namespace UserManagement {
   interface User extends ApiUserManagement.User {
     /** 序号 */
