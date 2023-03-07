@@ -35,34 +35,34 @@ const cardData: CardData[] = [
   {
     id: 'visit',
     title: '访问量',
-    value: 1000000,
+    value: 1000,
     unit: '',
     colors: ['#ec4786', '#b955a4'],
     icon: 'ant-design:bar-chart-outlined'
   },
   {
-    id: 'amount',
-    title: '成交额',
-    value: 234567.89,
-    unit: '$',
+    id: 'read',
+    title: '阅读量',
+    value: 23,
+    unit: '',
     colors: ['#865ec0', '#5144b4'],
-    icon: 'ant-design:money-collect-outlined'
+    icon: 'ri:book-read-line'
   },
   {
-    id: 'download',
-    title: '下载数',
-    value: 666666,
+    id: 'message',
+    title: '留言量',
+    value: 50,
     unit: '',
     colors: ['#56cdf3', '#719de3'],
-    icon: 'carbon:document-download'
+    icon: 'mdi:message-badge-outline'
   },
   {
-    id: 'trade',
-    title: '成交数',
-    value: 999999,
+    id: 'books',
+    title: '文章数',
+    value: 99,
     unit: '',
     colors: ['#fcbc25', '#f68057'],
-    icon: 'ant-design:trademark-circle-outlined'
+    icon: 'ph:books-fill'
   }
 ];
 </script>

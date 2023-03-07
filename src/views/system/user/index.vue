@@ -142,13 +142,17 @@ const columns: Ref<DataTableColumns<UserManagement.User>> = ref([
     render: row => {
       return (
         <NSpace justify={'center'}>
-          <NButton size={'small'} onClick={() => handleEditTable(row.id)}>
+          <NButton type="primary" ghost size={'small'} onClick={() => handleEditTable(row.id)}>
             编辑
           </NButton>
           <NPopconfirm onPositiveClick={() => handleDeleteTable(row.id)}>
             {{
               default: () => '确认删除',
-              trigger: () => <NButton size={'small'}>删除</NButton>
+              trigger: () => (
+                <NButton type="primary" ghost size={'small'}>
+                  删除
+                </NButton>
+              )
             }}
           </NPopconfirm>
         </NSpace>
