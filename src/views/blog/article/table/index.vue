@@ -8,7 +8,7 @@
           新增
         </n-button>
       </n-space>
-      <n-layout class="h-680px rounded-16px bg-transparent" has-sider>
+      <n-layout class="rounded-16px bg-transparent" has-sider>
         <!-- <n-layout-sider
               content-style="padding: 24px;"
               collapse-mode="width"
@@ -21,8 +21,9 @@
             </n-layout-sider> -->
         <n-layout :native-scrollbar="false">
           <n-grid class="p-t-5px p-b-5 p-l-30px p-r-30px" :x-gap="12" :y-gap="8" :cols="4">
-            <n-gi v-for="n in 100" :key="n">
+            <n-gi v-for="n in 10" :key="n">
               <ImageOrTextCard
+                :id="n"
                 img-url="https://img0.baidu.com/it/u=4017997553,107592496&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800"
               ></ImageOrTextCard>
             </n-gi>
@@ -35,5 +36,5 @@
 </template>
 
 <script setup lang="tsx">
-import { ImageOrTextCard, CardInfo } from './components';
+import { ImageOrTextCard } from './components';
 </script>

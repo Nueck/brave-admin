@@ -85,9 +85,7 @@
   "[vue]": {
     "editor.defaultFormatter": "Vue.volar"
   },
-  "i18n-ally.localesPaths": [
-    "src/locales",
-    "src/locales/lang"
-  ],
-  "vue-i18n.i18nPaths": "src/locales,src/locales/lang"
+
+  "vue-i18n.i18nPaths": "src/locales,src/locales/lang",
+  "i18n-ally.localesPaths": ["src/locales", "src/locales/lang"]
 }

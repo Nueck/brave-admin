@@ -1,8 +1,5 @@
 <template>
-  <n-card
-    class="max-w-400px min-h-100px max-h-200px rounded-10px border-1 shadow-sm hover:shadow-2xl"
-    clicked="onClickCard"
-  >
+  <n-card class="max-w-68 max-h-50 rounded-10px border-1 shadow-sm hover:shadow-2xl" @click="clickCard">
     <template #cover>
       <n-image
         v-if="props.imgUrl !== ''"
@@ -17,7 +14,7 @@
     </template>
 
     <n-space class="m-t-3" align="center" justify="start">
-      <n-ellipsis :line-clamp="2" class="max-h-full">
+      <n-ellipsis :line-clamp="2" class="max-h-auto">
         电灯熄灭 物换星移 泥牛入海黑暗好像 一颗巨石 按在胸口独脚大盗 百万富翁 摸爬滚打黑暗好像 一颗巨石 按在胸口
       </n-ellipsis>
     </n-space>
@@ -25,19 +22,29 @@
 </template>
 
 <script setup lang="tsx">
-interface CardInfo {
+import { routeName } from '@/router';
+import { useRouterPush } from '@/composables';
+const { routerPush } = useRouterPush();
+
+interface Props {
+  id: number;
   imgUrl: string;
   width: number;
   height: number;
   text: string;
 }
 
-const props = withDefaults(defineProps<CardInfo>(), {
+const props = withDefaults(defineProps<Props>(), {
+  id: 12312,
   imgUrl: '',
   width: 400,
   height: 200,
   text: ''
 });
+
+function clickCard() {
+  routerPush({ name: routeName('blog_article_edit'), query: { tableId: props.id }, hash: '#DEMO_HASH' });
+}
 
 defineEmits(['clickCard']);
 </script>
