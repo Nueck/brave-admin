@@ -6,13 +6,15 @@
       <icon-local-service-error v-if="type === '500'" />
     </div>
     <router-link :to="{ name: routeHomePath }">
-      <n-button type="primary">回到首页</n-button>
+      <n-button type="primary" @click="skipToMain">回到首页</n-button>
     </router-link>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { routeName } from '@/router';
+import { useRouterPush } from '@/composables';
+const { routerPush } = useRouterPush();
 
 defineOptions({ name: 'ExceptionBase' });
 
@@ -26,6 +28,10 @@ interface Props {
 defineProps<Props>();
 
 const routeHomePath = routeName('root');
+
+function skipToMain() {
+  routerPush({ name: routeHomePath });
+}
 </script>
 
 <style scoped></style>

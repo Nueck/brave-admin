@@ -1,23 +1,20 @@
 <template>
   <n-space :vertical="true" :size="16">
-    <n-card title="Tab Detail" :bordered="false" size="small" class="shadow-sm rounded-16px">
-      <n-space :vertical="true" :size="12">
-        <div>当前路由的描述数据(meta)：</div>
-        <div>{{ route.meta }}</div>
-        <n-button @click="handleToTab">返回</n-button>
-      </n-space>
-    </n-card>
+    <n-button @click="handleToTab">返回</n-button>
+    <md-editor v-model="text" />
   </n-space>
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
+import { ref } from 'vue';
+import MdEditor from 'md-editor-v3';
 import { routeName } from '@/router';
+import 'md-editor-v3/lib/style.css';
 import { useRouterPush } from '@/composables';
 
 const { routerPush } = useRouterPush();
 
-const route = useRoute();
+const text = ref('# Hello Editor');
 
 function handleToTab() {
   routerPush({ name: routeName('blog_article_table') });
