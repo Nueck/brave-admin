@@ -43,7 +43,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 function clickCard() {
-  routerPush({ name: routeName('blog_article_edit'), query: { tableId: props.id }, hash: '#DEMO_HASH' });
+  routerPush({ name: routeName('blog_article_edit'), query: { tableId: props.id } });
 }
 
 defineEmits(['clickCard']);
